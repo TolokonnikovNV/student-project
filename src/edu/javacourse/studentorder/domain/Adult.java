@@ -2,13 +2,17 @@ package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 
-public class Adult extends Person{
+public class Adult extends Person {
     private String passportSeries;
     private String passportNumber;
     private LocalDate issueDate;
     private String issueDepartment;
     private String university;
     private String studentId;
+
+//    public String getPersonString(){
+//        return surName + " " + givenName + ": " + passportNumber;
+//    }
 
     public String getPassportSeries() {
         return passportSeries;
