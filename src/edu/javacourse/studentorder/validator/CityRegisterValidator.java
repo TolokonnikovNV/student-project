@@ -6,16 +6,21 @@ import edu.javacourse.studentorder.domain.StudentOrder;
 public class CityRegisterValidator {
 
     public String hostName;
-    public String login;
-    public String passWord;
-    int port;
+    private String login;
+    private String passWord;
+    protected int port;
+    private CityRegisterChecker personChecker;
 
+    public CityRegisterValidator() {
+        personChecker = new FakeCityRegisterChecker();
+    }
 
-     public AnswerCheckCityRegister checkCityRegister(StudentOrder studentOrder) {
-        System.out.println("checkCityRegister is running "
-                + hostName + ", " + login + ", " + passWord);
+    public AnswerCheckCityRegister checkCityRegister(StudentOrder studentOrder) {
+        personChecker.checkPerson(studentOrder.getHusband());
+        personChecker.checkPerson(studentOrder.getWife());
+        personChecker.checkPerson(studentOrder.getChild());
+
         AnswerCheckCityRegister ans = new AnswerCheckCityRegister();
-        ans.success = false;
         return ans;
     }
 
