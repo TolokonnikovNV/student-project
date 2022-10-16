@@ -8,11 +8,35 @@ import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
 public class StudentOrderValidator {
+
+    private CityRegisterValidator cityRegisterValidator;
+    private WeddingValidator weddingValidator;
+    private ChildrenValidator childrenValidator;
+    private StudentValidator studentValidator;
+    private MailSender mailSender;
+
     public static void main(String[] args) {
-        checkAll();
+
+        StudentOrderValidator studentOrderValidator = new StudentOrderValidator();
+        studentOrderValidator.checkAll();
     }
 
-    static void checkAll() {
+
+
+
+    public StudentOrderValidator(){
+        cityRegisterValidator = new CityRegisterValidator();
+        weddingValidator = new WeddingValidator();
+        childrenValidator = new ChildrenValidator();
+        studentValidator = new StudentValidator();
+        mailSender = new MailSender();
+    }
+
+
+
+
+
+    public void checkAll() {
         while (true) {
             StudentOrder so = readStudentOrder();
             if (so == null) {
@@ -33,41 +57,30 @@ public class StudentOrderValidator {
         }
     }
 
-    static void sendMail(StudentOrder studentOrder) {
-        MailSender ms = new MailSender();
-        ms.sendMail(studentOrder);
+    public void sendMail(StudentOrder studentOrder) {
+        mailSender.sendMail(studentOrder);
     }
 
-    static StudentOrder readStudentOrder() {
+    public StudentOrder readStudentOrder() {
         StudentOrder so = new StudentOrder();
         return so;
     }
 
-    static AnswerCheckCityRegister checkCityRegister(StudentOrder studentOrder) {
-        CityRegisterValidator crv = new CityRegisterValidator();
-        crv.hostName = "host1";
-        crv.login = "login1";
-        crv.passWord = "passWord1";
-        AnswerCheckCityRegister ans = crv.checkCityRegister(studentOrder);
-        return ans;
+    public AnswerCheckCityRegister checkCityRegister(StudentOrder studentOrder) {
+        return cityRegisterValidator.checkCityRegister(studentOrder);
     }
 
-    static AnswerCheckWeddind checkWedding(StudentOrder studentOrder) {
-        WeddingValidator wv = new WeddingValidator();
-        AnswerCheckWeddind ans = wv.checkWedding(studentOrder);
-        return ans;
+    public AnswerCheckWeddind checkWedding(StudentOrder studentOrder) {
+
+        return weddingValidator.checkWedding(studentOrder);
     }
 
-    static AnswerCheckChildren checkChildren(StudentOrder studentOrder) {
-        ChildrenValidator cv = new ChildrenValidator();
-        AnswerCheckChildren ans = cv.checkChildren(studentOrder);
-        return ans;
+    public AnswerCheckChildren checkChildren(StudentOrder studentOrder) {
+        return childrenValidator.checkChildren(studentOrder);
     }
 
-    static AnswerCheckStudent checkStudent(StudentOrder studentOrder) {
-        StudentValidator sv = new StudentValidator();
-        AnswerCheckStudent ans = sv.checkStudent(studentOrder);
-        return ans;
+    public AnswerCheckStudent checkStudent(StudentOrder studentOrder) {
+        return studentValidator.checkStudent(studentOrder);
 
     }
 }

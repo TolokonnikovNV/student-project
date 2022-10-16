@@ -9,8 +9,8 @@ public class SaveStudentOrder {
         StudentOrder so;
         so = new StudentOrder();
         buildStudentOrder();
-        long ans = saveStudentOrder(so);
-        System.out.println(ans);
+//        long ans = saveStudentOrder(so);
+//        System.out.println(ans);
 
 
     }
@@ -25,13 +25,13 @@ public class SaveStudentOrder {
     static StudentOrder buildStudentOrder() {
         StudentOrder so = new StudentOrder();
         Adult husband = new Adult();
-        husband.setGivenName("Andrey");
-        husband.setSurName("Petrov");
-        husband.setPassportNumber("123456");
-        husband.setPassportSeries("0110");
-        so.setHusband(husband);
-        husband.getPersonString();
-        System.out.println(husband.getPersonString());
+//        husband.setGivenName("Andrey");
+//        husband.setSurName("Petrov");
+//        husband.setPassportNumber("123456");
+//        husband.setPassportSeries("0110");
+//        so.setHusband(husband);
+//        husband.getPersonString();
+//        System.out.println(husband.getPersonString());
         return so;
     }
 
