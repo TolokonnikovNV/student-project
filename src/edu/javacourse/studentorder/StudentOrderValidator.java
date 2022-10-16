@@ -21,10 +21,7 @@ public class StudentOrderValidator {
         studentOrderValidator.checkAll();
     }
 
-
-
-
-    public StudentOrderValidator(){
+    public StudentOrderValidator() {
         cityRegisterValidator = new CityRegisterValidator();
         weddingValidator = new WeddingValidator();
         childrenValidator = new ChildrenValidator();
@@ -32,38 +29,38 @@ public class StudentOrderValidator {
         mailSender = new MailSender();
     }
 
-
-
-
-
     public void checkAll() {
-        while (true) {
-            StudentOrder so = readStudentOrder();
-            if (so == null) {
-                break;
-            }
+        StudentOrder[] soArray = readStudentOrders();
 
-            AnswerCheckCityRegister cityAnswer = checkCityRegister(so);
-            if (!cityAnswer.success) {
-                break; //temp
-                //continue;
-            }
 
-            AnswerCheckWeddind weddingAnswer = checkWedding(so);
-            AnswerCheckChildren childrenAnswer = checkChildren(so);
-            AnswerCheckStudent studentAnswer = checkStudent(so);
-
-            sendMail(so);
+        for (StudentOrder so : soArray) {
+            System.out.println();
+            checkOneOrder(so);
         }
+
+
+    }
+
+    public void checkOneOrder(StudentOrder so) {
+        AnswerCheckCityRegister cityAnswer = checkCityRegister(so);
+        AnswerCheckWeddind weddingAnswer = checkWedding(so);
+        AnswerCheckChildren childrenAnswer = checkChildren(so);
+        AnswerCheckStudent studentAnswer = checkStudent(so);
+        sendMail(so);
     }
 
     public void sendMail(StudentOrder studentOrder) {
         mailSender.sendMail(studentOrder);
     }
 
-    public StudentOrder readStudentOrder() {
-        StudentOrder so = new StudentOrder();
-        return so;
+    public StudentOrder[] readStudentOrders() {
+        StudentOrder[] soArray = new StudentOrder[3];
+
+        for (int i = 0; i < soArray.length; i++) {
+            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
+        }
+        return soArray;
+
     }
 
     public AnswerCheckCityRegister checkCityRegister(StudentOrder studentOrder) {
