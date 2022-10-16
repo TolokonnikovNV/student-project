@@ -3,8 +3,12 @@ package edu.javacourse.studentorder;
 import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
+
 public class SaveStudentOrder {
     public static void main(String[] args) {
+
+
+
 
         StudentOrder so;
         so = new StudentOrder();
@@ -25,6 +29,7 @@ public class SaveStudentOrder {
     static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
+        Adult husband = new Adult("Popov", "Pavel", "Ivanovitch", null);
         return so;
     }
 
