@@ -1,7 +1,11 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.domain.Address;
 import edu.javacourse.studentorder.domain.Adult;
+import edu.javacourse.studentorder.domain.Child;
 import edu.javacourse.studentorder.domain.StudentOrder;
+
+import java.time.LocalDate;
 
 
 public class SaveStudentOrder {
@@ -22,15 +26,48 @@ public class SaveStudentOrder {
 
     static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
-        StudentOrder so1 = so;
+        Address address = new Address("195000", "Заневский пр.",
+                "12", "", "142");
+
         so.setStudentOrderId(id);
-      //  Adult husband = new Adult("Popov", "Pavel", "Ivanovitch", null);
-        printStudentOrder(so1);
+        so.setMarriageCertificateId("" + (123456000 + id));
+        so.setMarriageDate(LocalDate.of(2016, 7, 4));
+        so.setMarriageOffice("Отдел ЗАГС");
+        // Муж
+        Adult husband = new Adult("Петров", "Виктор", "Сергеевич",
+                LocalDate.of(1997, 8, 24));
+        husband.setPassportSeries("" + (1000 + id));
+        husband.setPassportNumber("" + (100000 + id));
+        husband.setIssueDate(LocalDate.of(2017, 9, 15));
+        husband.setIssueDepartment("Отдел милиции №" + id);
+        husband.setStudentId("" + (100000 + id));
+        husband.setAddress(address);
+        // Жена
+        Adult wife = new Adult("Петрова", "Вероника", "Алекссевна",
+                LocalDate.of(1998, 3, 12));
+        wife.setPassportSeries("" + (2000 + id));
+        wife.setPassportNumber("" + (200000 + id));
+        wife.setIssueDate(LocalDate.of(2018, 4, 5));
+        wife.setIssueDepartment("Отдел милиции №" + id);
+        wife.setStudentId("" + (200000 + id));
+        wife.setAddress(address);
+        // Ребенок
+        Child child = new Child("Петрова", "Ирина", "Викторовна",
+                LocalDate.of(2018, 6, 29));
+        child.setCertificateNumber("" + (300000 + id));
+        child.setIssueDate(LocalDate.of(2018, 7, 19));
+        child.setIssueDepartment("ОТдел ЗАГС №" + id);
+        child.setAddress(address);
+
+        so.setHusband(husband);
+        so.setWife(wife);
+        so.setChild(child);
+
         return so;
+
+
     }
 
-    static void printStudentOrder(StudentOrder so){
-        System.out.println(so.getStudentOrderId());
-    }
+
 
 }

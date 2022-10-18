@@ -25,7 +25,7 @@ public class CityRegisterValidator {
             CityRegisterCheckerResponse wifeAns = personChecker.checkPerson(studentOrder.getWife());
             CityRegisterCheckerResponse childAns = personChecker.checkPerson(studentOrder.getChild());
         } catch (CityRegisterException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
 
 

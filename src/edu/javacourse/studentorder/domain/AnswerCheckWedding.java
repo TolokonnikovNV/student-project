@@ -1,5 +1,5 @@
 package edu.javacourse.studentorder.domain;
 
-public class AnswerCheckWeddind {
+public class AnswerCheckWedding {
     boolean success;
 }

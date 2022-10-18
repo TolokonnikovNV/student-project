@@ -4,6 +4,14 @@ public class CityRegisterCheckerResponse {
     private boolean existent;
     private Boolean temporal = null;
 
+    @Override
+    public String toString() {
+        return "CityRegisterCheckerResponse{" +
+                "existent=" + existent +
+                ", temporal=" + temporal +
+                '}';
+    }
+
     public boolean isExistent() {
         return existent;
     }
