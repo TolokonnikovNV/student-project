@@ -11,8 +11,7 @@ public class SaveStudentOrder {
     }
 
     static long saveStudentOrder(StudentOrder studentOrder){
-        long answer;
-        answer = 199;
+        long answer = 199;
         System.out.println("saveStudentOrder: " + studentOrder.hFirstName + " " + studentOrder.hLastName + " " +
                                                   studentOrder.wFirstName + " " + studentOrder.wLastName);
         return answer;
