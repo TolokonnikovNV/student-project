@@ -10,8 +10,9 @@ public class StudentOrderValidator {
                 break;
             }
             AnswerCityRegister answerCityRegister = checkCityRegister(so);
-            if (!answerCityRegister.success){
-                continue;
+            if (!answerCityRegister.success) {
+//                continue;
+                break;
             }
             AnswerMarriage answerMarriage = checkMarriage(so);
             AnswerChildren answerChildren = checkChildren(so);
@@ -25,28 +26,23 @@ public class StudentOrderValidator {
 
 
     static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        System.out.println("checkCityRegister");
-        AnswerCityRegister answerCityRegister = new AnswerCityRegister();
-        answerCityRegister.success = false;
-        return answerCityRegister;
+        CityRegisterValidator cityRegisterValidator = new CityRegisterValidator();
+        cityRegisterValidator.hostName = "hostName";
+        cityRegisterValidator.login = "login";
+        cityRegisterValidator.password = "password";
+        return cityRegisterValidator.checkCityRegister(so);
     }
 
     static AnswerMarriage checkMarriage(StudentOrder so) {
-        System.out.println("checkMarriage");
-        AnswerMarriage answerMarriage = new AnswerMarriage();
-        return answerMarriage;
+        return MarriageValidator.checkMarriage(so);
     }
 
     static AnswerChildren checkChildren(StudentOrder so) {
-        System.out.println("checkChildren");
-        AnswerChildren answerChildren = new AnswerChildren();
-        return answerChildren;
+        return ChildrenValidator.checkChildren(so);
     }
 
     static AnswerStudent checkStudent(StudentOrder so) {
-        System.out.println("checkStudent");
-        AnswerStudent answerStudent = new AnswerStudent();
-        return answerStudent;
+        return StudentValidator.checkStudent(so);
     }
 
     static StudentOrder readStudentOrder() {
