@@ -3,12 +3,15 @@ package edu.javacourse.studentorder.domain;
 import java.time.LocalDate;
 
 public class Person {
-    private String surName;
-    private String givenName;
-    private String patronymic;
-    private LocalDate dateOfBirth;
+    protected String surName;
+    protected String givenName;
+    protected String patronymic;
+    protected LocalDate dateOfBirth;
+    protected Address address;
 
-    private Address address;
+    public String gePersonString(){
+        return surName;
+    }
 
 
     public String getSurName() {

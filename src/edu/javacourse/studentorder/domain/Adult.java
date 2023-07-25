@@ -12,6 +12,8 @@ public class Adult extends Person{
 
 
 
+
+
     public String getPassportSerial() {
         return passportSerial;
     }
