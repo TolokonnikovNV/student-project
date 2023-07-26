@@ -13,7 +13,6 @@ public class Person {
         return surName;
     }
 
-
     public String getSurName() {
         return surName;
     }
@@ -45,7 +44,6 @@ public class Person {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
 
     public Address getAddress() {
         return address;
