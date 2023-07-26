@@ -30,7 +30,7 @@ public class StudentOrderValidator {
 
     public void checkAll() {
         StudentOrder[] studentOrders = readStudentOrders();
-        
+
         for (StudentOrder studentOrder : studentOrders) {
             checkOneOrder(studentOrder);
         }

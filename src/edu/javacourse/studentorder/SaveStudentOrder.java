@@ -20,6 +20,8 @@ public class SaveStudentOrder {
     static StudentOrder buildStudentOrder(long id){
         StudentOrder studentOrder = new StudentOrder();
         studentOrder.setStudentOrderId(id);
+
+        Adult husband = new Adult("Vasiliev", "Ivan", "Petrovich", null);
         return studentOrder;
     }
 }
