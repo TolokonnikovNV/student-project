@@ -17,11 +17,9 @@ public class SaveStudentOrder {
         return answer;
     }
 
-    static StudentOrder buildStudentOrder(){
+    static StudentOrder buildStudentOrder(long id){
         StudentOrder studentOrder = new StudentOrder();
-        Adult husband = new Adult();
-        husband.setGivenName("Andrey");
-        studentOrder.setHusband(husband);
+        studentOrder.setStudentOrderId(id);
         return studentOrder;
     }
 }
