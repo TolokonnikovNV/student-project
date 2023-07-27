@@ -1,8 +1,10 @@
 package edu.javacourse.studentorder.validator;
 
 import edu.javacourse.studentorder.domain.Child;
+import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
-import edu.javacourse.studentorder.domain.register.CityRegisterChekerResponse;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegisterItem;
+import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.domain.StudentOrder;
 import edu.javacourse.studentorder.exeption.CityRegisterException;
 import edu.javacourse.studentorder.validator.register.CityRegisterChecker;
@@ -24,22 +26,27 @@ public class CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
-        try {
-            CityRegisterChekerResponse husbandAnswer = personChecker.checkPerson(so.getHusband());
-            CityRegisterChekerResponse wifeAnswer = personChecker.checkPerson(so.getWife());
+        AnswerCityRegister answerCityRegister = new AnswerCityRegister();
+            answerCityRegister.addItem(checkPerson(so.getHusband()));
+            answerCityRegister.addItem(checkPerson(so.getWife()));
 
             List<Child> children = so.getChildren();
-            for (Iterator<Child> iterator = children.listIterator(); iterator.hasNext(); ) {
-                Child child = iterator.next();
-                CityRegisterChekerResponse childAnswer = personChecker.checkPerson(child);
+            for(Child child: so.getChildren()){
+                answerCityRegister.addItem(checkPerson(child));
             }
 
+
+
+        return answerCityRegister;
+    }
+
+
+    private AnswerCityRegisterItem checkPerson(Person person){
+        try {
+            CityRegisterResponse husbandAnswer = personChecker.checkPerson(person);
         } catch (CityRegisterException ex) {
             ex.printStackTrace(System.out);
         }
-
-
-        AnswerCityRegister answerCityRegister = new AnswerCityRegister();
-        return answerCityRegister;
+        return null;
     }
 }
