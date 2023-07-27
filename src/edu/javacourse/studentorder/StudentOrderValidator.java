@@ -11,6 +11,10 @@ import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.MarriageValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class StudentOrderValidator {
 
     private CityRegisterValidator cityRegisterValidator;
@@ -33,7 +37,7 @@ public class StudentOrderValidator {
     }
 
     public void checkAll() {
-        StudentOrder[] studentOrders = readStudentOrders();
+        List<StudentOrder> studentOrders = readStudentOrders();
 
         for (StudentOrder studentOrder : studentOrders) {
             checkOneOrder(studentOrder);
@@ -69,14 +73,15 @@ public class StudentOrderValidator {
         return studentValidator.checkStudent(so);
     }
 
-    static StudentOrder[] readStudentOrders() {
-        StudentOrder[] studentOrdersArray = new StudentOrder[2];
-
-        for (int i = 0; i < studentOrdersArray.length; i++) {
-            studentOrdersArray[i] = SaveStudentOrder.buildStudentOrder(i);
+    static List<StudentOrder> readStudentOrders() {
+        List<StudentOrder> studentOrdersList = new LinkedList<>();
+        for (int i = 0; i < 5; i++){
+            StudentOrder studentOrder = SaveStudentOrder.buildStudentOrder(i);
+            studentOrdersList.add(studentOrder);
         }
 
-        return studentOrdersArray;
+
+        return studentOrdersList;
     }
 
     public void sendMail(StudentOrder so) {
