@@ -1,6 +1,6 @@
-package edu.javacourse.studentorder.validator;
+package edu.javacourse.studentorder.validator.register;
 
-import edu.javacourse.studentorder.domain.CityRegisterChekerResponse;
+import edu.javacourse.studentorder.domain.register.CityRegisterChekerResponse;
 import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.exeption.CityRegisterException;
 

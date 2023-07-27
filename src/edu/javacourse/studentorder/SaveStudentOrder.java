@@ -49,16 +49,24 @@ public class SaveStudentOrder {
         wife.setStudentId((20000 + id) + "");
         wife.setAddress(address);
 
-        Child child = new Child("Vasiliev", "Vladimir", "Ivanovich",
+        Child child1 = new Child("Vasiliev", "Vladimir", "Ivanovich",
                 LocalDate.of(2023, 3, 3));
-        child.setCertificateNumber((30000 + id) + "");
-        child.setIssueDate(LocalDate.of(2023, 3, 3));
-        child.setIssueDepartment("ZAGS");
-        child.setAddress(address);
+        child1.setCertificateNumber((30000 + id) + "");
+        child1.setIssueDate(LocalDate.of(2023, 3, 3));
+        child1.setIssueDepartment("ZAGS");
+        child1.setAddress(address);
+
+        Child child2 = new Child("Vasiliev", "Nikolay", "Ivanovich",
+                LocalDate.of(2023, 3, 3));
+        child2.setCertificateNumber((40000 + id) + "");
+        child2.setIssueDate(LocalDate.of(2023, 3, 3));
+        child2.setIssueDepartment("ZAGS");
+        child2.setAddress(address);
 
         studentOrder.setHusband(husband);
         studentOrder.setWife(wife);
-        studentOrder.setChild(child);
+        studentOrder.addChild(child1);
+        studentOrder.addChild(child2);
 
 
 

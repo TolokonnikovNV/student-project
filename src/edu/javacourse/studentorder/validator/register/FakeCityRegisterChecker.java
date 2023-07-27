@@ -1,6 +1,7 @@
-package edu.javacourse.studentorder.validator;
+package edu.javacourse.studentorder.validator.register;
 
 import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.domain.register.CityRegisterChekerResponse;
 import edu.javacourse.studentorder.exeption.CityRegisterException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {

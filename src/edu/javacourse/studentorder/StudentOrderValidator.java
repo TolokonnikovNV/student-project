@@ -1,6 +1,10 @@
 package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.domain.children.AnswerChildren;
+import edu.javacourse.studentorder.domain.marriage.AnswerMarriage;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.student.AnswerStudent;
 import edu.javacourse.studentorder.mail.MailSender;
 import edu.javacourse.studentorder.validator.ChildrenValidator;
 import edu.javacourse.studentorder.validator.CityRegisterValidator;
@@ -66,7 +70,7 @@ public class StudentOrderValidator {
     }
 
     static StudentOrder[] readStudentOrders() {
-        StudentOrder[] studentOrdersArray = new StudentOrder[3];
+        StudentOrder[] studentOrdersArray = new StudentOrder[2];
 
         for (int i = 0; i < studentOrdersArray.length; i++) {
             studentOrdersArray[i] = SaveStudentOrder.buildStudentOrder(i);
