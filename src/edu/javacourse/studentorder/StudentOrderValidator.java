@@ -38,11 +38,11 @@ public class StudentOrderValidator {
 
     public void checkOneOrder(StudentOrder studentOrder) {
         AnswerCityRegister answerCityRegister = checkCityRegister(studentOrder);
-        AnswerMarriage answerMarriage = checkMarriage(studentOrder);
-        AnswerChildren answerChildren = checkChildren(studentOrder);
-        AnswerStudent answerStudent = checkStudent(studentOrder);
+//        AnswerMarriage answerMarriage = checkMarriage(studentOrder);
+//        AnswerChildren answerChildren = checkChildren(studentOrder);
+//        AnswerStudent answerStudent = checkStudent(studentOrder);
 
-        sendMail(studentOrder);
+//        sendMail(studentOrder);
     }
 
 

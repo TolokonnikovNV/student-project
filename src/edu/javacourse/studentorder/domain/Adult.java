@@ -10,6 +10,9 @@ public class Adult extends Person{
     private String university;
     private String studentId;
 
+
+
+
     public Adult(String surName, String givenName, String patronymic, LocalDate dateOfBirth, Address address,
                  String passportSerial, String passportNumber, LocalDate issueDate, String issueDepartment,
                  String university, String studentId) {
@@ -21,6 +24,8 @@ public class Adult extends Person{
         this.university = university;
         this.studentId = studentId;
     }
+
+
 
     public Adult(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
         super(surName, givenName, patronymic, dateOfBirth);
