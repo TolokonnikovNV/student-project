@@ -75,7 +75,7 @@ public class StudentOrderValidator {
 
     static List<StudentOrder> readStudentOrders() {
         List<StudentOrder> studentOrdersList = new LinkedList<>();
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             StudentOrder studentOrder = SaveStudentOrder.buildStudentOrder(i);
             studentOrdersList.add(studentOrder);
         }

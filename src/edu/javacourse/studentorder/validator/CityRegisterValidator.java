@@ -48,19 +48,22 @@ public class CityRegisterValidator {
         AnswerCityRegisterItem.CityStatus status = null;
         AnswerCityRegisterItem.CityError error = null;
         try {
-           CityRegisterResponse cityRegisterResponse = personChecker.checkPerson(person);
-           status = cityRegisterResponse.isExisting() ?
-                   AnswerCityRegisterItem.CityStatus.YES :
-                   AnswerCityRegisterItem.CityStatus.NO;
-        } catch (CityRegisterException ex) {
-            ex.printStackTrace(System.out);
-            status = AnswerCityRegisterItem.CityStatus.ERROR;
-            error = new AnswerCityRegisterItem.CityError(ex.getCode(), ex.getCode());
+            CityRegisterResponse cityRegisterResponse = personChecker.checkPerson(person);
+            status = cityRegisterResponse.isExisting() ?
+                    AnswerCityRegisterItem.CityStatus.YES :
+                    AnswerCityRegisterItem.CityStatus.NO;
         } catch (TransportException ex) {
             ex.printStackTrace(System.out);
             status = AnswerCityRegisterItem.CityStatus.ERROR;
             error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
-
+        } catch (CityRegisterException ex) {
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(ex.getCode(), ex.getCode());
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         }
 
         AnswerCityRegisterItem answerCityRegisterItem = new AnswerCityRegisterItem(person, status, error);

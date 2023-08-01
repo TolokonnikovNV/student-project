@@ -30,11 +30,11 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
                 cityRegisterChekerResponse.setExisting(false);
             }
             if (passportSerial.equals(ERROR_1) || passportSerial.equals(ERROR_2)){
-                CityRegisterException cityRegisterException = new CityRegisterException("1", "GRN ERROR");
+                CityRegisterException cityRegisterException = new CityRegisterException("1", "GRN ERROR " + passportSerial);
                 throw  cityRegisterException;
             }
             if (passportSerial.equals(ERROR_T_1) || passportSerial.equals(ERROR_T_2)){
-                TransportException transportException = new TransportException("Transport ERROR");
+                TransportException transportException = new TransportException("Transport ERROR " + passportSerial);
                 throw  transportException;
             }
         }
