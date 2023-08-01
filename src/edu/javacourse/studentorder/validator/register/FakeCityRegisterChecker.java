@@ -3,6 +3,7 @@ package edu.javacourse.studentorder.validator.register;
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
 import edu.javacourse.studentorder.exeption.CityRegisterException;
+import edu.javacourse.studentorder.exeption.TransportException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
     private final String GOOD_1 = "1000";
@@ -11,8 +12,10 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     private final String BAD_2 = "2001";
     private final String ERROR_1 = "1002";
     private final String ERROR_2 = "2002";
+    private final String ERROR_T_1 = "1003";
+    private final String ERROR_T_2 = "2003";
 
-    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException {
+    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException, TransportException {
 
         CityRegisterResponse cityRegisterChekerResponse = new CityRegisterResponse();
 
@@ -27,8 +30,12 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
                 cityRegisterChekerResponse.setExisting(false);
             }
             if (passportSerial.equals(ERROR_1) || passportSerial.equals(ERROR_2)){
-                CityRegisterException cityRegisterException = new CityRegisterException("FAKE ERROR");
+                CityRegisterException cityRegisterException = new CityRegisterException("1", "GRN ERROR");
                 throw  cityRegisterException;
+            }
+            if (passportSerial.equals(ERROR_T_1) || passportSerial.equals(ERROR_T_2)){
+                TransportException transportException = new TransportException("Transport ERROR");
+                throw  transportException;
             }
         }
         if (person instanceof Child){
